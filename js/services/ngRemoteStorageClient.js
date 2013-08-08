@@ -41,11 +41,7 @@ function ($rootScope, $q) {
 
 ngRemoteStorageClient.controller('initRemoteStorageCtrl', ['$scope', '$route', '$routeParams', '$location', 'RS',
 function ($scope, $route, $routeParams, $location, RS) {
-
-  remoteStorage.util.silenceAllLoggers();
-    remoteStorage.defineModule('sockethub', function(privateClient, publicClient) {
-      privateClient.release('');
-      publicClient.release('');
+    RemoteStorage.defineModule('sockethub', function(privateClient, publicClient) {
       privateClient.declareType('config', {
         "description" : "sockethub config file",
         "type" : "object",
@@ -81,10 +77,9 @@ function ($scope, $route, $routeParams, $location, RS) {
       };
     });
 
-    remoteStorage.claimAccess({sockethub:'rw',messages:'rw',contacts:'rw'}).then(function () {
-      remoteStorage.displayWidget('remotestorage-connect', {
-        redirectUri: window.location.protocol + '//' + window.location.host + '/rscallback.html'
-      });
+    remoteStorage.access.claim({sockethub:'rw',messages:'rw',contacts:'rw'});
+    remoteStorage.displayWidget('remotestorage-connect', {
+      redirectUri: window.location.protocol + '//' + window.location.host + '/rscallback.html'
     });
 
 }]);

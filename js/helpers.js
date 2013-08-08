@@ -1,8 +1,7 @@
 
 
 function initRemoteStorage($scope) {
-  remoteStorage.util.silenceAllLoggers();
-  remoteStorage.defineModule('sockethub', function(privateClient, publicClient) {
+  RemoteStorage.defineModule('sockethub', function(privateClient, publicClient) {
     privateClient.declareType('config', {
       "description" : "sockethub config file",
       "type" : "object",
@@ -39,10 +38,8 @@ function initRemoteStorage($scope) {
     };
   });
 
-  remoteStorage.claimAccess('sockethub', 'rw').then(function() {
-    remoteStorage.displayWidget('remotestorage-connect', {
-      redirectUri: window.location.origin + '/rscallback.html'
-    });
+  remoteStorage.access.claim('sockethub', 'rw');
+  remoteStorage.displayWidget('remotestorage-connect', {
+    redirectUri: window.location.origin + '/rscallback.html'
   });
 }
-

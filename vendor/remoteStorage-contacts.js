@@ -1,4 +1,4 @@
-remoteStorage.defineModule('contacts', function(privateClient, publicClient) {
+RemoteStorage.defineModule('contacts', function(privateClient, publicClient) {
 
   /**
    *
