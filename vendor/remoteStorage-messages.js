@@ -1,4 +1,4 @@
-remoteStorage.defineModule('messages', function(privateClient, publicClient) {
+RemoteStorage.defineModule('messages', function(privateClient, publicClient) {
   function storeLast(userAddress, now) {
     privateClient.storeObject('last-message', 'last/'+userAddress, {
       timestamp: now
