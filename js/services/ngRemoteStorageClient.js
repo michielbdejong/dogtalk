@@ -8,7 +8,7 @@ function ($rootScope, $q) {
 
   return {
     isConnected: function () {
-      if (remoteStorage.getBearerToken() === null) {
+      if (remoteStorage.remote.token === null) {
         return false;
       } else {
         return true;
