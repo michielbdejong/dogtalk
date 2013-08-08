@@ -14,7 +14,7 @@
     <script>
 initRemoteStorage();
 setTimeout(function rsConnect() {
-  if (remoteStorage.getBearerToken() === 'null') {
+  if (remoteStorage.remote.token === 'null') {
     console.log('waiting for rs to connect');
     rsConnect();
   } else {
